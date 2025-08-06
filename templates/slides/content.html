@@ -1,0 +1,109 @@
+{% macro section_header(title, subtitle=None, background=None, transition=None) %}
+<section 
+    class="section-header"
+    {% if background %}data-background="{{ background }}"{% endif %}
+    {% if transition %}data-transition="{{ transition }}"{% endif %}
+>
+    <h2>{{ title }}</h2>
+    {% if subtitle %}
+    <h3>{{ subtitle }}</h3>
+    {% endif %}
+</section>
+{% endmacro %}
+
+{% macro content_slide(title=None, content=None, layout="default", background=None, transition=None) %}
+<section 
+    class="content-slide {{ layout }}"
+    {% if background %}data-background="{{ background }}"{% endif %}
+    {% if transition %}data-transition="{{ transition }}"{% endif %}
+>
+    {% if title %}
+    <h2>{{ title }}</h2>
+    {% endif %}
+
+    {% if layout == "two-columns" %}
+    <div class="two-columns">
+        <div class="column">
+            {{ content.left if content.left is string else content.left|safe }}
+        </div>
+        <div class="column">
+            {{ content.right if content.right is string else content.right|safe }}
+        </div>
+    </div>
+
+    {% elif layout == "grid" %}
+    <div class="grid grid-{{ content.columns|default(2) }}">
+        {% for item in content.items %}
+        <div class="grid-item">
+            {{ item if item is string else item|safe }}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% elif layout == "centered" %}
+    <div class="centered-content">
+        {{ content if content is string else content|safe }}
+    </div>
+
+    {% else %}
+    {{ content if content is string else content|safe }}
+    {% endif %}
+</section>
+{% endmacro %}
+
+{% macro feature_list(items, title=None, layout="default") %}
+<ul class="feature-list {% if layout %}layout-{{ layout }}{% endif %}">
+    {% for item in items %}
+    <li>{{ item if item is string else item|safe }}</li>
+    {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro code_block(code, language=None, title=None, line_numbers=true) %}
+<div class="code-example">
+    {% if title %}
+    <div class="code-title">{{ title }}</div>
+    {% endif %}
+    <pre><code class="{{ language }}" {% if line_numbers %}data-line-numbers{% endif %}>{{ code }}</code></pre>
+</div>
+{% endmacro %}
+
+{% macro note_box(content, type="info") %}
+<div class="note note-{{ type }}">
+    {{ content if content is string else content|safe }}
+</div>
+{% endmacro %}
+
+{% macro workflow(steps) %}
+<div class="workflow">
+    {% for step in steps %}
+    <div class="workflow-step">
+        <div class="step-number">{{ loop.index }}</div>
+        <div class="step-content">
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro comparison(left, right, title=None) %}
+<div class="comparison">
+    {% if title %}
+    <h3>{{ title }}</h3>
+    {% endif %}
+    <div class="two-columns">
+        <div class="column">
+            <div class="comparison-box">
+                {{ left if left is string else left|safe }}
+            </div>
+        </div>
+        <div class="column">
+            <div class="comparison-box">
+                {{ right if right is string else right|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

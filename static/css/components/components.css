@@ -1,0 +1,204 @@
+/**
+ * Reusable components for reveal.js presentations
+ */
+
+/* Grid Systems */
+.grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Content Boxes */
+.box {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    background: var(--bg-light);
+    box-shadow: var(--shadow-md);
+}
+
+.box-outline {
+    border: var(--border-width) solid var(--color-primary);
+    background: transparent;
+}
+
+.box-accent {
+    background: var(--bg-accent);
+    color: var(--text-light);
+}
+
+/* Cards */
+.card {
+    background: var(--bg-main);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.card-footer {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-secondary);
+}
+
+/* Lists */
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: calc(var(--spacing-lg) + var(--spacing-xs));
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: var(--spacing-sm);
+    color: var(--color-success);
+    font-weight: var(--heading-weight-bold);
+}
+
+/* Workflow Steps */
+.workflow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--spacing-xl) 0;
+    gap: var(--spacing-md);
+}
+
+.workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.workflow-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: calc(-1 * var(--spacing-lg));
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: var(--color-primary);
+    font-weight: var(--heading-weight-bold);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--color-primary);
+    color: var(--text-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+    font-weight: var(--heading-weight-bold);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8em;
+    font-weight: var(--heading-weight-medium);
+}
+
+.badge-primary { background: var(--color-primary); color: var(--text-light); }
+.badge-success { background: var(--color-success); color: var(--text-light); }
+.badge-warning { background: var(--color-warning); color: var(--text-primary); }
+.badge-danger { background: var(--color-danger); color: var(--text-light); }
+.badge-info { background: var(--color-info); color: var(--text-light); }
+
+/* Notes and Callouts */
+.note {
+    background: var(--bg-light);
+    border-left: 4px solid var(--color-primary);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}
+
+.note-warning {
+    border-left-color: var(--color-warning);
+}
+
+.note-danger {
+    border-left-color: var(--color-danger);
+}
+
+/* Contact Information */
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.contact-info > div {
+    text-align: center;
+    flex: 1;
+}
+
+.contact-info h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+
+    .workflow-step:not(:last-child)::after {
+        content: '↓';
+        right: auto;
+        top: auto;
+        bottom: calc(-1 * var(--spacing-lg));
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+}

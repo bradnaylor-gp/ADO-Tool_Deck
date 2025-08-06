@@ -1,0 +1,160 @@
+title: "ADO Inventory Tool"
+subtitle: "for Jefferson Health"
+theme: "guidepoint"
+favicon: "images/logos/ado_tool.png"
+date: "July 10, 2025"
+presenters:
+  - name: "Brad Naylor"
+    title: "Associate DevSecOps Engineer"
+  - name: "Jake Wyllie"
+    title: "Practice Lead, Mid-A DevSecOps"
+
+logos:
+  left: "images/logos/jefferson-logo-new.png"
+  right: "images/logos/guidepoint-logo.jpg"
+  center: "images/logos/ado_tool.png"
+
+reveal_config:
+  hash: true
+  controls: true
+  progress: true
+  slideNumber: "c/t"
+  showSlideNumber: "all"
+
+slides:
+  # ADO Tool Logo Slide
+  - type: "content"
+    layout: "centered"
+    content: |
+      <img src="images/logos/ado_tool.png" alt="ADO Inventory Tool" class="ado-tool-large">
+
+  # Project Context
+  - type: "section"
+    title: "Project Context"
+    content: |
+      <div class="context-box">
+        <p>Part of the Phase 1 Application Inventory deliverable:</p>
+        <blockquote>
+          "Establish ongoing application inventory maintenance processes building on GuidePoint's forthcoming discovery work"
+        </blockquote>
+      </div>
+      {{ feature_list([
+        "Comprehensive inventory of applications across 7 ADO organizations",
+        "Security coverage assessment",
+        "Ownership mapping",
+        "Risk classification"
+      ]) }}
+
+  # SOW Deliverables
+  - type: "content"
+    title: "Security Assessment Results"
+    content: |
+      <div class="deliverable-box">
+        <h3>Application Inventory Report</h3>
+        {{ feature_list([
+          "<strong>Comprehensive inventory</strong> of applications in scope as provided by Client",
+          "<strong>Categorization</strong> by risk level, business impact, and security coverage",
+          "<strong>Identification</strong> of security testing gaps and ownership mapping",
+          "<strong>Recommendations</strong> for improved asset management"
+        ]) }}
+      </div>
+      {{ note_box("<em>This tool provides the foundation data collection to support all deliverable requirements</em>") }}
+
+  # Tool Overview
+  - type: "content"
+    title: "Tool Overview"
+    layout: "two-columns"
+    content:
+      left: |
+        <h3>Key Features</h3>
+        {{ feature_list([
+          "<strong>Healthcare Compliance Focused</strong> - HIPAA-Ready",
+          "Comprehensive Audit Logging",
+          "Data Sanitization",
+          "Secure Credential Management",
+          "Conservative Resource Usage"
+        ]) }}
+      right: |
+        <h3>Security Features</h3>
+        {{ feature_list([
+          "Environment variable-based authentication",
+          "Automatic sensitive data redaction",
+          "HIPAA-compliant audit trails",
+          "Healthcare compliance reporting"
+        ]) }}
+
+  # How It Works
+  - type: "content"
+    title: "How It Works"
+    content: |
+      {{ workflow([
+        {
+          "title": "Data Collection",
+          "description": "Scans all repositories across all projects in each ADO organization"
+        },
+        {
+          "title": "Analysis",
+          "description": "Evaluates security coverage, ownership, and compliance"
+        },
+        {
+          "title": "Reporting",
+          "description": "Generates detailed CSV and JSON reports"
+        }
+      ]) }}
+
+  # Installation & Setup
+  - type: "content"
+    title: "Installation & Setup"
+    content: |
+      {{ code_block("""
+      # Extract the tool package
+      unzip ado-inventory-tool.zip
+      cd ado-inventory-tool/
+
+      # Install uv if not already installed
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      # Create virtual environment and install dependencies
+      uv venv
+      uv pip install .
+
+      # Set environment variables
+      export ADO_ORG="your-organization-name"
+      export ADO_PAT="your-personal-access-token"
+      """, language="bash") }}
+      
+      {{ note_box("<strong>Security Note:</strong> Never store your Personal Access Token in files. Always use environment variables.", type="warning") }}
+
+  # Running the Tool
+  - type: "content"
+    title: "Running the Tool"
+    content: |
+      <p>For each of your 7 ADO organizations:</p>
+      
+      {{ code_block("""
+      # Basic inventory with compliance report
+      python ado_inventory.py --org "OrgName" --compliance-report --output-dir "./output/OrgName"
+
+      # For more detailed output
+      python ado_inventory.py --org "OrgName" --compliance-report --export-detailed --output-dir "./output/OrgName"
+      """, language="bash") }}
+      
+      {{ note_box("Required permissions: Code (Read), Project and Team (Read), Build (Read)") }}
+
+  # Questions & Contact
+  - type: "content"
+    title: "Questions?"
+    layout: "centered"
+    content: |
+      <div class="contact-info">
+        <div>
+          <h3>Brad Naylor</h3>
+          <p>Associate DevSecOps Engineer</p>
+          <p>brad.naylor@guidepointsecurity.com</p>
+        </div>
+        <div>
+          <h3>Jake Wyllie</h3>
+          <p>Practice Lead, Mid-A DevSecOps</p>
+          <p>jake.wyllie@guidepointsecurity.com</p>
+        </div>
+      </div>

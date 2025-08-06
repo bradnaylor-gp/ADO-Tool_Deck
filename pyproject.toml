@@ -1,0 +1,44 @@
+[project]
+name = "reveal-template"
+version = "0.1.0"
+description = "A flexible reveal.js template system with Jinja2"
+authors = [
+    { name = "Brad Naylor", email = "brad.naylor@guidepointsecurity.com" }
+]
+dependencies = [
+    "jinja2>=3.1.2",
+    "pyyaml>=6.0.1",
+    "python-frontmatter>=1.0.0",
+    "watchdog>=3.0.0",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "black>=23.7.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.1",
+    "pytest>=7.4.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

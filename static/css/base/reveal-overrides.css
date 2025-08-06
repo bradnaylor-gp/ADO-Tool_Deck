@@ -1,0 +1,136 @@
+/**
+ * Core reveal.js overrides and customizations
+ */
+
+.reveal {
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+}
+
+/* Slide sizing and positioning */
+.reveal .slides {
+    text-align: left;
+}
+
+.reveal .slides section {
+    width: var(--slide-width);
+    height: var(--slide-height);
+    padding: var(--slide-margin);
+}
+
+/* Typography hierarchy */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    font-family: var(--font-family);
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+/* Content elements */
+.reveal p {
+    margin: 15px 0;
+    line-height: var(--line-height-base);
+}
+
+.reveal ul,
+.reveal ol {
+    display: inline-block;
+    text-align: left;
+    margin: 0 0 0 1em;
+}
+
+.reveal ul li,
+.reveal ol li {
+    margin: 0.3em 0;
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+    margin-bottom: 0.5em;
+}
+
+/* Code blocks */
+.reveal pre {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    text-align: left;
+    font-family: monospace;
+    line-height: 1.2em;
+    word-wrap: break-word;
+}
+
+.reveal code {
+    font-family: monospace;
+    text-transform: none;
+    border-radius: 3px;
+}
+
+.reveal pre code {
+    display: block;
+    padding: 15px;
+    overflow: auto;
+    max-height: 400px;
+    word-wrap: normal;
+    border-radius: 5px;
+}
+
+/* Images */
+.reveal section img {
+    margin: 15px 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Links */
+.reveal a {
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+/* Progress bar */
+.reveal .progress {
+    height: 6px;
+}
+
+/* Slide transitions */
+.reveal .slides section {
+    transition: transform 0.8s ease, opacity 0.8s ease, background-color 0.8s ease;
+}
+
+/* Print/PDF export */
+@media print {
+    .reveal .slides section {
+        page-break-inside: avoid;
+    }
+    
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+        page-break-after: avoid;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reveal .slides section {
+        width: 100%;
+        padding: calc(var(--slide-margin) / 2);
+    }
+    
+    .reveal {
+        font-size: calc(var(--font-size-base) * 0.8);
+    }
+}

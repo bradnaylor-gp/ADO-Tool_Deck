@@ -1,0 +1,167 @@
+/**
+ * GuidePoint Security Dark Theme
+ * Extends the default theme with GuidePoint branding
+ */
+
+:root {
+    /* Override default theme colors with GuidePoint branding */
+    --guidepoint-dark-blue: #1a1a2e;
+    --guidepoint-navy: #16213e;
+    --guidepoint-blue: #0f3460;
+    --guidepoint-accent-blue: #00a8ff;
+    --guidepoint-light-blue: #4aa9ff;
+
+    /* Theme color overrides */
+    --color-primary: var(--guidepoint-accent-blue);
+    --color-secondary: var(--guidepoint-light-blue);
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-info: var(--guidepoint-light-blue);
+    --color-light: #f8f9fa;
+    --color-dark: var(--guidepoint-dark-blue);
+    --color-white: #ffffff;
+
+    /* Background colors */
+    --bg-main: var(--guidepoint-dark-blue);
+    --bg-dark: var(--guidepoint-navy);
+    --bg-light: var(--guidepoint-blue);
+    --bg-accent: var(--guidepoint-accent-blue);
+
+    /* Text colors */
+    --text-primary: var(--color-white);
+    --text-secondary: var(--guidepoint-light-blue);
+    --text-light: var(--color-white);
+    --text-accent: var(--guidepoint-accent-blue);
+}
+
+/* GuidePoint specific styles */
+.reveal {
+    background: var(--bg-main);
+}
+
+.reveal h1 {
+    color: var(--text-primary);
+}
+
+.reveal h2 {
+    color: var(--guidepoint-accent-blue);
+}
+
+.reveal h3 {
+    color: var(--guidepoint-light-blue);
+}
+
+/* Custom components for GuidePoint theme */
+.context-box {
+    background: var(--guidepoint-navy);
+    border-left: 4px solid var(--guidepoint-accent-blue);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.deliverable-box {
+    background: var(--color-white);
+    border: var(--border-width) solid var(--guidepoint-accent-blue);
+    padding: calc(var(--spacing-md) + 5px);
+    margin: var(--spacing-md) 0;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 6px 20px rgba(0, 168, 255, 0.15);
+    color: var(--guidepoint-dark-blue);
+}
+
+.deliverable-box h3 {
+    color: var(--guidepoint-accent-blue);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Risk level indicators */
+.risk-low {
+    color: var(--color-success);
+}
+
+.risk-medium {
+    color: var(--color-warning);
+}
+
+.risk-high {
+    color: var(--color-danger);
+}
+
+.risk-critical {
+    color: #8b0000;
+    font-weight: var(--heading-weight-bold);
+}
+
+/* Logo positioning */
+.logo {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 120px;
+    height: auto;
+    z-index: 1000;
+    opacity: 0.8;
+}
+
+/* Title slide specific styles */
+.title-slide {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 90vh;
+    position: relative;
+    padding: var(--spacing-md);
+    padding-top: 120px;
+}
+
+.title-slide h1 {
+    margin-top: var(--spacing-xl);
+    text-shadow: var(--shadow-sm);
+}
+
+.title-slide h2 {
+    text-shadow: var(--shadow-sm);
+}
+
+.title-slide .presenters {
+    margin-top: var(--spacing-xl);
+    font-size: 0.8em;
+}
+
+.title-slide .date {
+    margin-top: var(--spacing-lg);
+    font-size: 0.7em;
+    color: var(--guidepoint-light-blue);
+}
+
+/* Grid layouts */
+.two-columns {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+}
+
+.two-columns > div {
+    flex: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .two-columns {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    .logo {
+        width: 80px;
+    }
+
+    .title-slide {
+        padding-top: 80px;
+    }
+}

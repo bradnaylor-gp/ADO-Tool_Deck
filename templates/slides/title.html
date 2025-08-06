@@ -1,0 +1,39 @@
+{% macro title_slide(title, subtitle=None, presenters=None, date=None, logos={}) %}
+<section class="title-slide">
+    {# Logo positioning #}
+    {% if logos.left %}
+    <img src="{{ logos.left }}" alt="Left Logo" class="logo-left">
+    {% endif %}
+    
+    {% if logos.right %}
+    <img src="{{ logos.right }}" alt="Right Logo" class="logo-right">
+    {% endif %}
+    
+    {% if logos.center %}
+    <img src="{{ logos.center }}" alt="Center Logo" class="logo-center">
+    {% endif %}
+
+    {# Title content #}
+    <h1>{{ title }}</h1>
+    
+    {% if subtitle %}
+    <h2>{{ subtitle }}</h2>
+    {% endif %}
+
+    {% if presenters %}
+    <div class="presenters">
+        {% if presenters is string %}
+            <p>{{ presenters }}</p>
+        {% else %}
+            {% for presenter in presenters %}
+            <p>{{ presenter.name }}{% if presenter.title %} - {{ presenter.title }}{% endif %}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if date %}
+    <div class="date">{{ date }}</div>
+    {% endif %}
+</section>
+{% endmacro %}
